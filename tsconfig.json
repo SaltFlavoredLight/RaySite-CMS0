@@ -5,12 +5,7 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "skipLibCheck": true,
-    "lib": [
-      "ESNext"
-    ],
-    "types": ["vite/client"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "lib": ["ESNext"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "worker-configuration.d.ts"],
   "exclude": ["RaySite-CMS0"]

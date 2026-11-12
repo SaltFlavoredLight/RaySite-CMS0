@@ -1,23 +1,23 @@
 ```txt
 npm install
-npm run dev
+wrangler dev
 ```
 
 The Worker is configured in [`wrangler.jsonc`](./wrangler.jsonc) and uses the
 `raysite_cms0_db` D1 binding. Authenticate with Wrangler before deploying:
 
 ```txt
-npx wrangler login
+wrangler login
 ```
 
 ```txt
-npm run deploy
+wrangler deploy
 ```
 
 [For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
 
 ```txt
-npm run cf-typegen
+wrangler types --env-interface CloudflareBindings
 ```
 
 Pass the `CloudflareBindings` as generics when instantiation `Hono`:
