@@ -1,0 +1,31 @@
+{
+  "name": "RaySite-CMS0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "npx tsc --noEmit",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "auth:generate": "npx --yes auth@1.7.3 generate --config src/auth/index.ts --output src/db/auth.schema.ts -y",
+    "auth:format": "npx --yes prettier --write src/db/auth.schema.ts",
+    "auth:update": "npm run auth:generate && npm run auth:format",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:dev": "wrangler d1 migrations apply RAYSITE_CMS0_DB --local",
+    "db:migrate:prod": "wrangler d1 migrations apply RAYSITE_CMS0_DB --remote",
+    "db:studio:dev": "drizzle-kit studio",
+    "db:studio:prod": "NODE_ENV=production drizzle-kit studio"
+  },
+  "dependencies": {
+    "@better-auth/drizzle-adapter": "1.7.3",
+    "@cloudflare/workers-types": "^5.20260830.1",
+    "better-auth": "1.7.3",
+    "better-auth-cloudflare": "latest",
+    "drizzle-orm": "^0.45.0",
+    "hono": "4.13.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "drizzle-kit": "^0.31.4",
+    "typescript": "^5.8.3",
+    "wrangler": "4.127.1"
+  }
+}

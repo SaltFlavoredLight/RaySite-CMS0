@@ -2,11 +2,15 @@
   "name": "raysite-cms0",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
-    "build": "tsc --noEmit",
+    "dev": "vite",
+    "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "deploy": "wrangler deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "db:migrate:local": "wrangler d1 migrations apply raysite-cms0-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply raysite-cms0-db --remote",
+    "r2:list": "wrangler r2 bucket list"
   },
   "dependencies": {
     "better-auth": "^1.7.21",
@@ -28,6 +32,10 @@
     "prosemirror-view": "^1.41.3"
   },
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "@cloudflare/vite-plugin": "^1.69.0",
+    "@hono/vite-dev-server": "^0.26.1",
+    "astro": "^7.4.11",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
   }
 }
