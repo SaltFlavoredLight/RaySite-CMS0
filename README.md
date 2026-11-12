@@ -4,25 +4,27 @@ wrangler dev
 ```
 
 The Worker is configured in [`wrangler.jsonc`](./wrangler.jsonc) and uses the
-`raysite_cms0_db` D1 binding. Authenticate with Wrangler before deploying:
+`raysite_cms0_db` D1 binding and `raysite_cms0_assets` R2 binding. The Worker
+uses plain Hono TypeScript without JSX. Authenticate with Wrangler before
+deploying:
 
 ```txt
 wrangler login
 ```
 
 ```txt
-wrangler deploy
+npm run deploy
 ```
 
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
+For local development and storage migrations:
 
 ```txt
-wrangler types --env-interface CloudflareBindings
+npm run dev
+npm run db:migrate:local
 ```
 
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
+Apply a migration to the Cloudflare D1 database only when ready:
 
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
+```txt
+npm run db:migrate:remote
 ```
