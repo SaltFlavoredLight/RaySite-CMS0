@@ -7,6 +7,6 @@
     "skipLibCheck": true,
     "lib": ["ESNext"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "worker-configuration.d.ts"],
+  "include": ["src/**/*.ts", "worker-configuration.d.ts"],
   "exclude": ["RaySite-CMS0"]
 }
